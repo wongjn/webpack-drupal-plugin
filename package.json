@@ -8,5 +8,28 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/wongjn/webpack-drupal-plugin.git"
+  },
+  "scripts": {
+    "format": "prettier --write . && eslint --fix .",
+    "lint": "eslint .",
+    "test": "mocha"
+  },
+  "engines": {
+    "node": "^12"
+  },
+  "peerDependencies": {
+    "webpack": "^5"
+  },
+  "devDependencies": {
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^12.19.15",
+    "eslint": "^7.19.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "mocha": "^8.2.1",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.3",
+    "webpack": "^5.19.0"
   }
 }
