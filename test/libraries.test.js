@@ -22,7 +22,7 @@ describe('librariesMatcher()', function () {
     const component = randomString();
     deepStrictEqual(librariesMatcher(`jquery-ui/ui/widgets/${component}`), {
       library: `core/jquery.ui.${component}`,
-      external: 'undefined',
+      external: `jQuery/*core/jquery.ui.${component}*/`,
     });
   });
 
@@ -30,7 +30,7 @@ describe('librariesMatcher()', function () {
     const library = `${randomString()}/${randomString()}`;
     deepStrictEqual(librariesMatcher(`Drupal/${library}`), {
       library,
-      external: 'Drupal',
+      external: `Drupal/*${library}*/`,
     });
   });
 

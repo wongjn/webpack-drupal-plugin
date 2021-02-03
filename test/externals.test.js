@@ -28,4 +28,11 @@ describe('Externals mapping', function () {
     strictEqual(externals.length, 1);
     strictEqual(externals[0].userRequest, 'Drupal');
   });
+
+  it('should keep libraries that resolve to the same external separate', async function () {
+    const { compilation } = await runWebpack({
+      entry: './src/multiple-externals.js',
+    });
+    strictEqual(getExternalModules(compilation).length, 4);
+  });
 });
