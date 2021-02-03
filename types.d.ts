@@ -26,6 +26,6 @@ type WebpackExternalsCallback = (err?: Error, result?: WebpackExternal) => void;
  */
 type Library = {
   name: string;
-  files: string[];
+  files: { [x: string]: Object };
   dependencies: string[];
 };
