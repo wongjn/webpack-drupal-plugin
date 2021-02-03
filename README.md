@@ -28,24 +28,24 @@ the `Drupal` global object.
 Third-party imports that exist in Drupal core will also be mapped, according to
 their [npm](https://npmjs.com/) package names (as well as the above pattern).
 
-| Import                                   | Drupal Library          |
-| ---------------------------------------- | ----------------------- |
-| `import Backbone from 'backbone'`        | core/backbone           |
-| `import CKEDITOR from 'ckeditor4'`       | core/ckeditor           |
-| `import 'es6-promise/auto'`              | core/es6-promise        |
-| `import jQuery from 'jquery'`            | core/jquery             |
-| `import 'jquery-cookie'`                 | core/jquery.cookie      |
-| `import 'farbtastic'`                    | core/jquery.farbtastic  |
-| `import 'jquery-form'`                   | core/jquery.form        |
-| `import 'joyride'`                       | core/jquery.joyride     |
-| `import 'jquery-once'`                   | core/jquery.once        |
-| `import 'jquery-ui'`                     | core/jquery.ui.widget   |
-| `import 'jquery-ui/ui/widget'`           | core/jquery.ui.widget   |
-| `import 'jquery-ui/ui/widgets/[widget]'` | core/jquery.ui.[widget] |
-| `import 'jquery-ui/ui/position'`         | core/jquery.ui.position |
-| `import Modernizr from 'modernizr'`      | core/modernizr          |
-| `import Popper from '@popperjs/core'`    | core/popperjs           |
-| `import Sortable from 'sortablejs'`      | core/sortable           |
-| `import Cookies from 'js-cookie'`        | core/js-cookie          |
+| Import                                               | Drupal Library          |
+| ---------------------------------------------------- | ----------------------- |
+| `import Backbone from 'backbone'`                    | core/backbone           |
+| `import CKEDITOR from 'ckeditor4'`                   | core/ckeditor           |
+| `import 'es6-promise/auto'`                          | core/es6-promise        |
+| `import jQuery from 'jquery'`                        | core/jquery             |
+| `import jQuery from 'jquery-cookie'`                 | core/jquery.cookie      |
+| `import jQuery from 'farbtastic'`                    | core/jquery.farbtastic  |
+| `import jQuery from 'jquery-form'`                   | core/jquery.form        |
+| `import jQuery from 'joyride'`                       | core/jquery.joyride     |
+| `import jQuery from 'jquery-once'`                   | core/jquery.once        |
+| `import jQuery from 'jquery-ui'`                     | core/jquery.ui.widget   |
+| `import jQuery from 'jquery-ui/ui/widget'`           | core/jquery.ui.widget   |
+| `import jQuery from 'jquery-ui/ui/widgets/[widget]'` | core/jquery.ui.[widget] |
+| `import jQuery from 'jquery-ui/ui/position'`         | core/jquery.ui.position |
+| `import Modernizr from 'modernizr'`                  | core/modernizr          |
+| `import Popper from '@popperjs/core'`                | core/popperjs           |
+| `import Sortable from 'sortablejs'`                  | core/sortable           |
+| `import Cookies from 'js-cookie'`                    | core/js-cookie          |
 
 As indicated above, the import will give the appropriate global if it exists.
