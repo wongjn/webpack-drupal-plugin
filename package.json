@@ -11,7 +11,7 @@
   },
   "scripts": {
     "format": "prettier --write . && eslint --fix .",
-    "lint": "eslint .",
+    "lint": "tsc; eslint .",
     "test": "mocha"
   },
   "engines": {
