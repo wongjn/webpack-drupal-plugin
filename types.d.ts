@@ -20,3 +20,12 @@ type WebpackExternal = string | boolean | string[] | { [index: string]: any };
  * Webpack external definition callback.
  */
 type WebpackExternalsCallback = (err?: Error, result?: WebpackExternal) => void;
+
+/**
+ * Internal representation of a parsed library from a Webpack entry.
+ */
+type Library = {
+  name: string;
+  files: string[];
+  dependencies: string[];
+};

@@ -3,7 +3,9 @@
     "allowJs": true,
     "checkJs": true,
     "strict": true,
-    "noEmit": true
+    "noEmit": true,
+    "downlevelIteration": true,
+    "lib": ["ES2019"]
   },
   "exclude": [
     "test/**/*.test.js",
