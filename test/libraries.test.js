@@ -4,7 +4,7 @@
  */
 
 const { deepStrictEqual, strictEqual } = require('assert');
-const { externalsMatcher } = require('../lib/externals');
+const { librariesMatcher } = require('../lib/libraries');
 
 /**
  * Generates a random string.
@@ -17,10 +17,10 @@ const randomString = (length = 8) =>
     .toString(36)
     .substring(2, 2 + length);
 
-describe('externalsMatcher()', function () {
+describe('librariesMatcher()', function () {
   it('should return dynamic mappings for jQuery UI widgets', function () {
     const component = randomString();
-    deepStrictEqual(externalsMatcher(`jquery-ui/ui/widgets/${component}`), {
+    deepStrictEqual(librariesMatcher(`jquery-ui/ui/widgets/${component}`), {
       library: `core/jquery.ui.${component}`,
       external: 'undefined',
     });
@@ -28,7 +28,7 @@ describe('externalsMatcher()', function () {
 
   it('should return dynamic mappings for Drupal libraries', function () {
     const library = `${randomString()}/${randomString()}`;
-    deepStrictEqual(externalsMatcher(`Drupal/${library}`), {
+    deepStrictEqual(librariesMatcher(`Drupal/${library}`), {
       library,
       external: 'Drupal',
     });
@@ -36,18 +36,18 @@ describe('externalsMatcher()', function () {
 
   describe('Invalid requests', function () {
     it('should return false for Drupal library with no slash', function () {
-      strictEqual(externalsMatcher(`Drupal/${randomString()}`), false);
+      strictEqual(librariesMatcher(`Drupal/${randomString()}`), false);
     });
 
     it('should return false for Drupal library with invalid name', function () {
       strictEqual(
-        externalsMatcher(`Drupal/${randomString()}./${randomString()}`),
+        librariesMatcher(`Drupal/${randomString()}./${randomString()}`),
         false,
       );
     });
 
     it('should return false for unrelated imports', function () {
-      strictEqual(externalsMatcher(randomString()), false);
+      strictEqual(librariesMatcher(randomString()), false);
     });
   });
 });
