@@ -107,6 +107,39 @@ return [
     strictEqual(await getContent(), expected, 'All JavaScript files included.');
   });
 
+  it('should process "dependOn" as sibling dependencies', async function () {
+    await runWebpack({
+      entry: {
+        main: './src/simple-drupal-import.js',
+        other: { import: './src/simple-drupal-import-0.js', dependOn: 'main' },
+      },
+    });
+
+    const expected = `${HEADER}
+return [
+  'main' => [
+    'js' => [
+      'dist/main.js' => [],
+    ],
+    'dependencies' => [
+      'core/drupal',
+    ],
+  ],
+  'other' => [
+    'js' => [
+      'dist/other.js' => [],
+    ],
+    'dependencies' => [
+      'extension/library',
+      'core/drupalSettings',
+      'fixtures/main',
+    ],
+  ],
+];
+`;
+    strictEqual(await getContent(), expected, 'Has sibling dependency');
+  });
+
   it('should propagate minified option from Webpack', async function () {
     await runWebpack({ optimization: { minimize: true } });
     const expected = `${HEADER}
