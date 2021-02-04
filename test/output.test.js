@@ -92,4 +92,23 @@ return [
 
     strictEqual(await getContent(), expected, 'All JavaScript files included.');
   });
+
+  it('should propagate minified option from Webpack', async function () {
+    await runWebpack({ optimization: { minimize: true } });
+    const expected = `${HEADER}
+return [
+  'main' => [
+    'js' => [
+      'dist/main.js' => [
+        'minified' => TRUE,
+      ],
+    ],
+    'dependencies' => [
+      'core/drupal',
+    ],
+  ],
+];
+`;
+    strictEqual(await getContent(), expected);
+  });
 });
