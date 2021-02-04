@@ -133,4 +133,27 @@ return [
     });
     await assertBuiltFileExists(`${slug}.inc`);
   });
+
+  it('should use the "processor" option', async function () {
+    const prop = randomString();
+    const processor = ({ filename }) => ({ [prop]: filename.toUpperCase() });
+
+    await runWebpack({ plugins: [new DrupalPlugin({ processor })] });
+
+    const expected = `${HEADER}
+return [
+  'main' => [
+    'js' => [
+      'dist/main.js' => [
+        '${prop}' => 'MAIN.JS',
+      ],
+    ],
+    'dependencies' => [
+      'core/drupal',
+    ],
+  ],
+];
+`;
+    strictEqual(await getContent(), expected);
+  });
 });

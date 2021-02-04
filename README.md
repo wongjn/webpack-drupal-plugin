@@ -61,6 +61,11 @@ module.exports = {
     new DrupalPlugin({
       // The filename of the PHP file exported.
       filename: 'assets.php',
+      // Processor that returns properties for a file. The processor is given an
+      // argument object `{ filename: string, compilation: Compilation }` for
+      // each file and should return an object of properties (return an empty
+      // object when no properties should be added).
+      processor: DrupalPlugin.maybeMinified,
     }),
   ],
 };

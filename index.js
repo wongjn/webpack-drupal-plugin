@@ -21,9 +21,14 @@ const externalsMatcher = ({ request = '' }, callback) => {
 };
 
 module.exports = class DrupalPlugin {
-  constructor({ filename = 'assets.php' } = {}) {
+  constructor({
+    filename = 'assets.php',
+    processor = DrupalPlugin.maybeMinified,
+  } = {}) {
     /** @protected */
     this.filename = filename;
+    /** @protected */
+    this.processor = processor;
   }
 
   /**
@@ -39,9 +44,19 @@ module.exports = class DrupalPlugin {
       compilation.hooks.additionalAssets.tap(this.constructor.name, () => {
         // eslint-disable-next-line no-param-reassign
         compilation.assets[this.filename] = new sources.RawSource(
-          writeFile(parseEntries(compilation)),
+          writeFile(parseEntries(compilation, this.processor)),
         );
       });
     });
+  }
+
+  /**
+   * Adds minified property to files when minified by Webpack.
+   *
+   * @param {FileProcessorArguments} args Arguments.
+   * @return {Object} File properties.
+   */
+  static maybeMinified({ compilation }) {
+    return compilation.options.optimization.minimize ? { minified: true } : {};
   }
 };
