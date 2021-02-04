@@ -189,4 +189,39 @@ return [
 `;
     strictEqual(await getContent(), expected);
   });
+
+  it('should use the "extensionName" option', async function () {
+    const extensionName = randomString();
+    await runWebpack({
+      entry: {
+        main: './src/simple-drupal-import.js',
+        other: { import: './src/simple-drupal-import-0.js', dependOn: 'main' },
+      },
+      plugins: [new DrupalPlugin({ extensionName })],
+    });
+
+    const expected = `${HEADER}
+return [
+  'main' => [
+    'js' => [
+      'dist/main.js' => [],
+    ],
+    'dependencies' => [
+      'core/drupal',
+    ],
+  ],
+  'other' => [
+    'js' => [
+      'dist/other.js' => [],
+    ],
+    'dependencies' => [
+      'extension/library',
+      'core/drupalSettings',
+      '${extensionName}/main',
+    ],
+  ],
+];
+`;
+    strictEqual(await getContent(), expected, '"extensionName" option used.');
+  });
 });

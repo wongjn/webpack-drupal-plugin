@@ -3,6 +3,7 @@
  * Main plugin class.
  */
 
+const { basename } = require('path');
 const { ExternalsPlugin, sources } = require('webpack');
 const { parseEntries } = require('./lib/assets');
 const { librariesMatcher } = require('./lib/libraries');
@@ -24,11 +25,14 @@ module.exports = class DrupalPlugin {
   constructor({
     filename = 'assets.php',
     processor = DrupalPlugin.maybeMinified,
+    extensionName = '',
   } = {}) {
     /** @protected */
     this.filename = filename;
     /** @protected */
     this.processor = processor;
+    /** @protected */
+    this.extensionName = extensionName;
   }
 
   /**
@@ -41,10 +45,17 @@ module.exports = class DrupalPlugin {
     new ExternalsPlugin('var', externalsMatcher).apply(compiler);
 
     compiler.hooks.compilation.tap(this.constructor.name, (compilation) => {
+      const extensionName =
+        this.extensionName || basename(compilation.options.context || '');
       compilation.hooks.additionalAssets.tap(this.constructor.name, () => {
         // eslint-disable-next-line no-param-reassign
         compilation.assets[this.filename] = new sources.RawSource(
-          writeFile(parseEntries(compilation, this.processor)),
+          writeFile(
+            parseEntries(compilation, {
+              processor: this.processor,
+              extensionName,
+            }),
+          ),
         );
       });
     });

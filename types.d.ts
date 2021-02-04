@@ -37,8 +37,3 @@ type FileProcessorArguments = {
   filename: string;
   compilation: import('webpack').Compilation;
 }
-
-/**
- * A processor that returns properties for a file.
- */
-type FileProcessor = (args: FileProcessorArguments) => Object;

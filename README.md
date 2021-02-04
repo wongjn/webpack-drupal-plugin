@@ -55,7 +55,10 @@ As indicated above, the import will give the appropriate global if it exists.
 Explanation and defaults of options for the plugin are given below.
 
 ```js
+const context = 'foo/bar/baz';
+
 module.exports = {
+  context,
   // ...
   plugins: [
     new DrupalPlugin({
@@ -66,6 +69,10 @@ module.exports = {
       // each file and should return an object of properties (return an empty
       // object when no properties should be added).
       processor: DrupalPlugin.maybeMinified,
+      // The extension (theme, module, profile) name that the built libraries
+      // belong to. This is necessary when using `dependOn` option for entries
+      // so that this plugin can correctly declare sibling dependencies.
+      extensionName: require('path').basename(context),
     }),
   ],
 };
