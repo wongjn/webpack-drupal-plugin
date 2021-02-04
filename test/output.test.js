@@ -6,7 +6,12 @@
 const { strictEqual } = require('assert');
 const fs = require('fs').promises;
 const { optimize } = require('webpack');
-const { cleanDist, runWebpack, FIXTURES_DIST } = require('./utils');
+const {
+  cleanDist,
+  runWebpack,
+  FIXTURES_DIST,
+  randomString,
+} = require('./utils');
 const DrupalPlugin = require('..');
 
 const getContent = () => fs.readFile(`${FIXTURES_DIST}/assets.php`, 'utf8');
@@ -27,6 +32,16 @@ const HEADER = `<?php
  */
 `;
 
+/**
+ * Asserts a built file exists.
+ *
+ * @param {string} filename Name of the file to assert exists.
+ */
+const assertBuiltFileExists = async (filename) => {
+  const files = await fs.readdir(FIXTURES_DIST);
+  strictEqual(files.includes(filename), true, `${filename} exists.`);
+};
+
 describe('PHP file', function () {
   afterEach(cleanDist);
 
@@ -38,8 +53,7 @@ describe('PHP file', function () {
       },
     });
 
-    const files = await fs.readdir(FIXTURES_DIST);
-    strictEqual(files.includes('assets.php'), true, '"assets.php" exists.');
+    await assertBuiltFileExists('assets.php');
 
     const expected = `${HEADER}
 return [
@@ -110,5 +124,13 @@ return [
 ];
 `;
     strictEqual(await getContent(), expected);
+  });
+
+  it('should use the "filename" option', async function () {
+    const slug = randomString();
+    await runWebpack({
+      plugins: [new DrupalPlugin({ filename: `${slug}.inc` })],
+    });
+    await assertBuiltFileExists(`${slug}.inc`);
   });
 });

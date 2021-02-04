@@ -49,3 +49,19 @@ their [npm](https://npmjs.com/) package names (as well as the above pattern).
 | `import Cookies from 'js-cookie'`                    | core/js-cookie          |
 
 As indicated above, the import will give the appropriate global if it exists.
+
+## Options
+
+Explanation and defaults of options for the plugin are given below.
+
+```js
+module.exports = {
+  // ...
+  plugins: [
+    new DrupalPlugin({
+      // The filename of the PHP file exported.
+      filename: 'assets.php',
+    }),
+  ],
+};
+```

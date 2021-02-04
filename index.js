@@ -20,9 +20,12 @@ const externalsMatcher = ({ request = '' }, callback) => {
   callback(undefined, library ? library.external : undefined);
 };
 
-/* eslint-disable class-methods-use-this */
-
 module.exports = class DrupalPlugin {
+  constructor({ filename = 'assets.php' } = {}) {
+    /** @protected */
+    this.filename = filename;
+  }
+
   /**
    * Applies the plugin onto the webpack compiler.
    *
@@ -35,7 +38,7 @@ module.exports = class DrupalPlugin {
     compiler.hooks.compilation.tap(this.constructor.name, (compilation) => {
       compilation.hooks.additionalAssets.tap(this.constructor.name, () => {
         // eslint-disable-next-line no-param-reassign
-        compilation.assets['assets.php'] = new sources.RawSource(
+        compilation.assets[this.filename] = new sources.RawSource(
           writeFile(parseEntries(compilation)),
         );
       });

@@ -40,3 +40,14 @@ module.exports.runWebpack = (config = {}) =>
       (error, stats) => (error || !stats ? reject(error) : resolve(stats)),
     ),
   );
+
+/**
+ * Generates a random string.
+ *
+ * @param {number} [length=8] Length of the string to generate.
+ * @return {string} The random string.
+ */
+module.exports.randomString = (length = 8) =>
+  Math.random()
+    .toString(36)
+    .substring(2, 2 + length);

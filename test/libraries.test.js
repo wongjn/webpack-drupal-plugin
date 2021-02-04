@@ -4,18 +4,8 @@
  */
 
 const { deepStrictEqual, strictEqual } = require('assert');
+const { randomString } = require('./utils');
 const { librariesMatcher } = require('../lib/libraries');
-
-/**
- * Generates a random string.
- *
- * @param {number} [length=8] Length of the string to generate.
- * @return {string} The random string.
- */
-const randomString = (length = 8) =>
-  Math.random()
-    .toString(36)
-    .substring(2, 2 + length);
 
 describe('librariesMatcher()', function () {
   it('should return dynamic mappings for jQuery UI widgets', function () {
