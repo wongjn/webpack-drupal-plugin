@@ -9,6 +9,11 @@
     "type": "git",
     "url": "https://github.com/wongjn/webpack-drupal-plugin.git"
   },
+  "keywords": [
+    "drupal",
+    "webpack",
+    "webpack-plugin"
+  ],
   "scripts": {
     "format": "prettier --write . && eslint --fix .",
     "lint": "tsc; eslint .",
