@@ -7,8 +7,5 @@
     "downlevelIteration": true,
     "lib": ["ES2019"]
   },
-  "exclude": [
-    "test/**/*.test.js",
-    "test/fixtures/**"
-  ]
+  "exclude": ["test/**/*.test.js", "test/fixtures/**"]
 }

@@ -36,4 +36,4 @@ type Library = {
 type FileProcessorArguments = {
   filename: string;
   compilation: import('webpack').Compilation;
-}
+};
