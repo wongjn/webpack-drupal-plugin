@@ -2,6 +2,12 @@ name: Test
 
 on:
   push:
+    paths-ignore:
+      - .github/**
+      - .vscode/**
+      - .editorconfig
+      - .npmignore
+      - '**.md'
   pull_request:
   workflow_dispatch:
 
