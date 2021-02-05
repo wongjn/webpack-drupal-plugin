@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with: { node-version: '12' }
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+            node_modules
+          key: v1-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: v1-node-
+      - run: npm install
+      - run: npm test

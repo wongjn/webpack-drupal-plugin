@@ -12,6 +12,7 @@
   "scripts": {
     "format": "prettier --write . && eslint --fix .",
     "lint": "tsc; eslint .",
+    "pretest": "npm run lint",
     "test": "mocha"
   },
   "engines": {
