@@ -1,6 +1,6 @@
 # Webpack Drupal plugin
 
-![Build](https://github.com/wongjn/webpack-drupal-plugin/workflows/Test/badge.svg)
+[![Tests status](https://github.com/wongjn/webpack-drupal-plugin/workflows/Tests/badge.svg)](https://github.com/wongjn/webpack-drupal-plugin/actions?query=workflow%3ATests)
 [![npm](https://img.shields.io/npm/v/webpack-drupal-plugin)](https://npmjs.com/package/webpack-drupal-plugin)
 
 A Webpack plugin that bridges Webpack-built assets with Drupal extensions by
