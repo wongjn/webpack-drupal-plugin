@@ -245,5 +245,42 @@ return [
 `;
 
     strictEqual(await getContent(), expected, '"libraryName" option used.');
+
+    await runWebpack({
+      entry: {
+        main: './src/simple-drupal-import.js',
+        other: { import: './src/simple-drupal-import-0.js', dependOn: 'main' },
+      },
+      plugins: [new DrupalPlugin({ libraryName: `${prefix}[name]` })],
+    });
+
+    const siblingExpected = `${HEADER}
+return [
+  '${prefix}main' => [
+    'js' => [
+      'dist/main.js' => [],
+    ],
+    'dependencies' => [
+      'core/drupal',
+    ],
+  ],
+  '${prefix}other' => [
+    'js' => [
+      'dist/other.js' => [],
+    ],
+    'dependencies' => [
+      'extension/library',
+      'core/drupalSettings',
+      'fixtures/${prefix}main',
+    ],
+  ],
+];
+`;
+
+    strictEqual(
+      await getContent(),
+      siblingExpected,
+      '"libraryName" option is propagated to sibling dependencies.',
+    );
   });
 });
