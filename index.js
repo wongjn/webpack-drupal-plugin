@@ -26,6 +26,7 @@ module.exports = class DrupalPlugin {
     filename = 'assets.php',
     processor = DrupalPlugin.maybeMinified,
     extensionName = '',
+    libraryName = '[name]',
   } = {}) {
     /** @protected */
     this.filename = filename;
@@ -33,6 +34,8 @@ module.exports = class DrupalPlugin {
     this.processor = processor;
     /** @protected */
     this.extensionName = extensionName;
+    /** @protected */
+    this.libraryName = libraryName;
   }
 
   /**
@@ -54,6 +57,7 @@ module.exports = class DrupalPlugin {
             parseEntries(compilation, {
               processor: this.processor,
               extensionName,
+              libraryName: this.libraryName,
             }),
           ),
         );

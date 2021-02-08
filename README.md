@@ -76,6 +76,9 @@ module.exports = {
       // belong to. This is necessary when using `dependOn` option for entries
       // so that this plugin can correctly declare sibling dependencies.
       extensionName: require('path').basename(context),
+      // The naming template for the library definitions. [name] can be used as
+      // a placeholder for the entry name.
+      libraryName: '[name]',
     }),
   ],
 };

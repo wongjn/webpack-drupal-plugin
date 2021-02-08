@@ -224,4 +224,26 @@ return [
 `;
     strictEqual(await getContent(), expected, '"extensionName" option used.');
   });
+
+  it('should use the "libraryName" option', async function () {
+    const prefix = randomString();
+    await runWebpack({
+      plugins: [new DrupalPlugin({ libraryName: `${prefix}[name]` })],
+    });
+
+    const expected = `${HEADER}
+return [
+  '${prefix}main' => [
+    'js' => [
+      'dist/main.js' => [],
+    ],
+    'dependencies' => [
+      'core/drupal',
+    ],
+  ],
+];
+`;
+
+    strictEqual(await getContent(), expected, '"libraryName" option used.');
+  });
 });
