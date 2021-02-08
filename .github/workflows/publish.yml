@@ -10,7 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-        with: { node-version: '12' }
+        with:
+          node-version: '12'
+          registry: https://registry.npmjs.org/
       - uses: actions/cache@v2
         with:
           path: |
@@ -18,6 +20,5 @@ jobs:
             node_modules
           key: v1-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: v1-node-
-      - run: npm install
       - run: npm publish
         env: { NODE_AUTH_TOKEN: '${{ secrets.NPM_TOKEN }}' }

@@ -8,6 +8,8 @@ on:
       - .editorconfig
       - .npmignore
       - '**.md'
+    tags-ignore:
+      - '**'
   pull_request:
   workflow_dispatch:
 
