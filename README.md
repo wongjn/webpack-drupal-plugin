@@ -47,6 +47,7 @@ their [npm](https://npmjs.com/) package names (as well as the above pattern).
 | `import jQuery from 'jquery-ui/ui/widgets/[widget]'` | core/jquery.ui.[widget] |
 | `import jQuery from 'jquery-ui/ui/position'`         | core/jquery.ui.position |
 | `import Modernizr from 'modernizr'`                  | core/modernizr          |
+| `import once from '@drupal/once'`                    | core/once               |
 | `import Popper from '@popperjs/core'`                | core/popperjs           |
 | `import Sortable from 'sortablejs'`                  | core/sortable           |
 | `import Cookies from 'js-cookie'`                    | core/js-cookie          |
