@@ -1,6 +1,6 @@
 {
   "name": "webpack-drupal-plugin",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Webpack plugin that bridges Webpack-built assets with Drupal extensions.",
   "main": "index.js",
   "author": "wongjn",
