@@ -71,7 +71,9 @@ module.exports = class DrupalPlugin {
    * @param {FileProcessorArguments} args Arguments.
    * @return {Object} File properties.
    */
-  static maybeMinified({ compilation }) {
-    return compilation.options.optimization.minimize ? { minified: true } : {};
+  static maybeMinified({ filename, compilation }) {
+    return compilation.options.optimization.minimize && filename.endsWith('.js')
+      ? { minified: true }
+      : {};
   }
 };

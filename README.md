@@ -7,6 +7,9 @@ A Webpack plugin that bridges Webpack-built assets with Drupal extensions by
 generating a php file that returns the webpack-emitted assets as library
 definitions to be used in [`hook_library_info_build()`](https://api.drupal.org/apis/hook_library_info_build).
 
+This plugin supports JavaScript files as well as CSS files (added to the
+`theme` group).
+
 ## Dependencies
 
 Imports are automatically mapped to [Webpack externals](https://webpack.js.org/configuration/externals)
