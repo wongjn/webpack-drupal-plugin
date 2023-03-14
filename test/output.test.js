@@ -130,8 +130,8 @@ return [
       'dist/other.js' => [],
     ],
     'dependencies' => [
-      'extension/library',
       'core/drupalSettings',
+      'extension/library',
       'fixtures/main',
     ],
   ],
@@ -215,8 +215,8 @@ return [
       'dist/other.js' => [],
     ],
     'dependencies' => [
-      'extension/library',
       'core/drupalSettings',
+      'extension/library',
       '${extensionName}/main',
     ],
   ],
@@ -269,8 +269,8 @@ return [
       'dist/other.js' => [],
     ],
     'dependencies' => [
-      'extension/library',
       'core/drupalSettings',
+      'extension/library',
       'fixtures/${prefix}main',
     ],
   ],
