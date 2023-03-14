@@ -20,7 +20,7 @@ describe('librariesMatcher()', function () {
     const library = `${randomString()}/${randomString()}`;
     deepStrictEqual(librariesMatcher(`Drupal/${library}`), {
       library,
-      external: `Drupal/*${library}*/`,
+      external: `window.Drupal/*${library}*/`,
     });
   });
 
