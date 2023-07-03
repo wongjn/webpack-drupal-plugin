@@ -16,6 +16,29 @@ describe('librariesMatcher()', function () {
     });
   });
 
+  describe('CKEditor5 Plugins', function () {
+    it('should return dynamic mappings', function () {
+      const plugin = 'special-characters';
+      deepStrictEqual(librariesMatcher(`@ckeditor/ckeditor5-${plugin}`), {
+        library: 'core/ckeditor5.specialCharacters',
+        external: 'CKEditor5.specialCharacters',
+      });
+    });
+
+    const nameDeviations = [
+      { name: 'basic-styles', expected: 'basic' },
+      { name: 'block-quote', expected: 'blockquote' },
+    ];
+    nameDeviations.forEach(({ name, expected }) => {
+      it(`should return core/ckeditor5.${expected} for @ckeditor/ckeditor5-${name}`, function () {
+        deepStrictEqual(librariesMatcher(`@ckeditor/ckeditor5-${name}`), {
+          library: `core/ckeditor5.${expected}`,
+          external: `CKEditor5.${expected}`,
+        });
+      });
+    });
+  });
+
   describe('Invalid requests', function () {
     it('should return false for Drupal library with no slash', function () {
       strictEqual(librariesMatcher(`Drupal/${randomString()}`), false);

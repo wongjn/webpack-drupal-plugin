@@ -37,6 +37,8 @@ their [npm](https://npmjs.com/) package names (as well as the above pattern).
 | Import                                               | Drupal Library          |
 | ---------------------------------------------------- | ----------------------- |
 | `import CKEDITOR from 'ckeditor4'`                   | core/ckeditor           |
+| `import CKEditor from 'ckeditor5'`                   | core/ckeditor5          |
+| `import namespace from '@ckeditor/ckeditor5-[plugin]'` | core/ckeditor5.[plugin] |
 | `import 'es6-promise/auto'`                          | core/es6-promise        |
 | `import jQuery from 'jquery'`                        | core/jquery             |
 | `import Modernizr from 'modernizr'`                  | core/modernizr          |
