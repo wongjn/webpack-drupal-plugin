@@ -33,6 +33,6 @@ describe('Externals mapping', function () {
     const { compilation } = await runWebpack({
       entry: './src/multiple-externals.js',
     });
-    strictEqual(getExternalModules(compilation).length, 4);
+    strictEqual(getExternalModules(compilation).length, 2);
   });
 });

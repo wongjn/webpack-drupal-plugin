@@ -1,6 +1,4 @@
-import 'farbtastic';
-import 'jquery-form';
-import 'jquery-ui/ui/widget';
-import $ from 'joyride';
+import once from '@drupal/once';
+import 'jquery';
 
-$('document').joyride();
+once();

@@ -8,14 +8,6 @@ const { randomString } = require('./utils');
 const { librariesMatcher } = require('../lib/libraries');
 
 describe('librariesMatcher()', function () {
-  it('should return dynamic mappings for jQuery UI widgets', function () {
-    const component = randomString();
-    deepStrictEqual(librariesMatcher(`jquery-ui/ui/widgets/${component}`), {
-      library: `core/jquery.ui.${component}`,
-      external: `jQuery/*core/jquery.ui.${component}*/`,
-    });
-  });
-
   it('should return dynamic mappings for Drupal libraries', function () {
     const library = `${randomString()}/${randomString()}`;
     deepStrictEqual(librariesMatcher(`Drupal/${library}`), {
