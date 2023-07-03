@@ -45,7 +45,6 @@ their [npm](https://npmjs.com/) package names (as well as the above pattern).
 | `import once from '@drupal/once'`                    | core/once               |
 | `import Sortable from 'sortablejs'`                  | core/sortable           |
 | `import tabbable from 'tabbable'`                    | core/tabbable           |
-| `import Cookies from 'js-cookie'`                    | core/js-cookie          |
 
 As indicated above, the import will give the appropriate global if it exists.
 
